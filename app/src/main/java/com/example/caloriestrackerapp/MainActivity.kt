@@ -13,8 +13,12 @@ import androidx.navigation.compose.rememberNavController
 import com.example.caloriestrackerapp.navigation.navigate
 import com.example.caloriestrackerapp.ui.theme.CaloriesTrackerAppTheme
 import com.example.core.navigation.Route
+import com.example.onboarding_presentation.activity.ActivityScreen
 import com.example.onboarding_presentation.age.AgeScreen
 import com.example.onboarding_presentation.gender.GenderScreen
+import com.example.onboarding_presentation.goal.GoalScreen
+import com.example.onboarding_presentation.height.HeightScreen
+import com.example.onboarding_presentation.weight.WeightScreen
 import com.example.onboarding_presentation.welcome.WelcomeScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,16 +29,14 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
-            CaloriesTrackerAppTheme {
+            CaloriesTrackerAppTheme() {
                 val navController = rememberNavController()
                 val scaffoldState = rememberScaffoldState()
-
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     scaffoldState = scaffoldState
                 ) { paddingValues ->
-                    paddingValues.calculateTopPadding()
+                    paddingValues
                     NavHost(
                         navController = navController,
                         startDestination = Route.WELCOME
@@ -52,19 +54,25 @@ class MainActivity : ComponentActivity() {
                             GenderScreen(onNavigate = navController::navigate)
                         }
                         composable(Route.HEIGHT) {
-
+                            HeightScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
                         }
                         composable(Route.WEIGHT) {
-
+                            WeightScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
                         }
                         composable(Route.NUTRIENT_GOAL) {
 
                         }
                         composable(Route.ACTIVITY) {
-
+                            ActivityScreen(onNavigate = navController::navigate)
                         }
                         composable(Route.GOAL) {
-
+                            GoalScreen(onNavigate = navController::navigate)
                         }
 
                         composable(Route.TRACKER_OVERVIEW) {
@@ -76,10 +84,7 @@ class MainActivity : ComponentActivity() {
                     }
                 }
 
-
-
             }
         }
     }
 }
-
