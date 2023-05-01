@@ -9,11 +9,13 @@ import com.example.core.domain.model.Gender
 import com.example.core.domain.prefrences.Preferences
 import com.example.core.navigation.Route
 import com.example.core.util.UiEvent
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class GenderViewModel @Inject constructor(
     private val preferences: Preferences
 ) : ViewModel(){
