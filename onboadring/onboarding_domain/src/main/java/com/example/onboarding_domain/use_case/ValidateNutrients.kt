@@ -8,7 +8,7 @@ class ValidateNutrients {
         carbsRatioText : String,
         proteinRatioText : String,
         fatRatioText : String
-    )  : Result{
+    )  : Result {
         val carbsRatio = carbsRatioText.toIntOrNull()
         val proteinRatio = proteinRatioText.toIntOrNull()
         val fatRatio = fatRatioText.toIntOrNull()

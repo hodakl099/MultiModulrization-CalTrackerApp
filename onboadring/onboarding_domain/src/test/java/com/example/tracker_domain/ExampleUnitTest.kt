@@ -1,4 +1,4 @@
-package com.example.onboarding_domain
+package com.example.tracker_domain
 
 import org.junit.Test
 
