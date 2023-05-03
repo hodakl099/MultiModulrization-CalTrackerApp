@@ -97,7 +97,7 @@ class DefaultPreferences(
     override fun loadOnboarding(): Boolean {
         return sharedPReferences.getBoolean(
             Preferences.SHOULD_LOAD_ON_BOARDING,
-            trues
+            true
         )
     }
 }
