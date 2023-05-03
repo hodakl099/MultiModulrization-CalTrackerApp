@@ -23,7 +23,6 @@ class NutrientGoalViewModel @Inject constructor(
     private val validateNutrients : ValidateNutrients
 ) : ViewModel() {
 
-
     var state by mutableStateOf(NutrientGoalState())
     private set
 

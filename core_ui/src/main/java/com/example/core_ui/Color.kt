@@ -1,4 +1,4 @@
-package com.example.caloriestrackerapp.ui.theme
+package com.example.core_ui
 
 import androidx.compose.ui.graphics.Color
 

@@ -88,4 +88,16 @@ class DefaultPreferences(
             fatRatio = fatRatio
         )
     }
+
+    override fun shouldLoadOnboarding(shouldLoad: Boolean) {
+        sharedPReferences.edit()
+            .putBoolean(Preferences.SHOULD_LOAD_ON_BOARDING, shouldLoad).apply()
+    }
+
+    override fun loadOnboarding(): Boolean {
+        return sharedPReferences.getBoolean(
+            Preferences.SHOULD_LOAD_ON_BOARDING,
+            trues
+        )
+    }
 }
