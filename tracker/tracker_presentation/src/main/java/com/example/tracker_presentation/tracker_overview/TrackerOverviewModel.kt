@@ -34,6 +34,7 @@ class TrackerOverviewModel @Inject constructor(
     private var getFoodsForDate: Job? = null
 
     init {
+        refreshFoods()
         preferences.shouldLoadOnboarding(false)
     }
 

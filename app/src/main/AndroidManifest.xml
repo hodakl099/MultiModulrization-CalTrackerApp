@@ -4,6 +4,7 @@
     package="com.example.caloriestrackerapp"
     >
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name=".CaloryCalApp"
         android:allowBackup="true"
