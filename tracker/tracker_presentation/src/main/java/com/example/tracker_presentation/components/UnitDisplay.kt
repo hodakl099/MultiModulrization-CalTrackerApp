@@ -34,6 +34,7 @@ fun UnitDisplay(
         Text(
             text = amount.toString(),
             color = amountColor,
+            fontSize = amountTextSize,
             style = MaterialTheme.typography.h1,
             modifier = Modifier.alignBy(LastBaseline)
         )

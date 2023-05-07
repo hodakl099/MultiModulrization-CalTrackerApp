@@ -11,10 +11,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.annotation.ExperimentalCoilApi
 import com.example.core.util.UiEvent
 import com.example.core_ui.LocalSpacing
-import com.example.tracker_presentation.tracker_overview.components.AddButton
-import com.example.tracker_presentation.tracker_overview.components.DaySelector
-import com.example.tracker_presentation.tracker_overview.components.NutrientHeader
-import com.example.tracker_presentation.tracker_overview.components.TrackedFoodItem
+import com.example.tracker_presentation.tracker_overview.components.*
 import core.R
 
 @ExperimentalCoilApi
@@ -32,7 +29,7 @@ fun TrackerOverviewScreen(
             .padding(bottom = spacing.spaceMedium)
     ) {
         item {
-            NutrientHeader(state = state)
+            NutrientsHeader(state = state)
             Spacer(modifier = Modifier.height(spacing.spaceMedium))
             DaySelector(
                 date = state.date,
@@ -73,6 +70,7 @@ fun TrackerOverviewScreen(
                             Spacer(modifier = Modifier.height(spacing.spaceMedium))
                         }
                         AddButton(
+                            modifier = Modifier.fillMaxWidth(),
                             text = stringResource(
                                 id = R.string.add_meal,
                                 meal.name.asString(context)
@@ -82,7 +80,6 @@ fun TrackerOverviewScreen(
                                     TrackerOverviewEvent.OnAddFoodClick(meal)
                                 )
                             },
-                            modifier = Modifier.fillMaxWidth()
                         )
                     }
                 },

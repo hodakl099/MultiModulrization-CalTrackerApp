@@ -27,32 +27,28 @@ import core.R
 
 @Composable
 fun NutrientBarInfo(
-    value : Int,
-    goal : Int,
-    name : String,
-    color : Color,
-    modifier : Modifier = Modifier,
-    strokeWidth : Dp = 8.dp
+    value: Int,
+    goal: Int,
+    name: String,
+    color: Color,
+    modifier: Modifier = Modifier,
+    strokeWidth: Dp = 8.dp,
 ) {
-
-    val backGround = MaterialTheme.colors.background
-    val goalExceedColor = MaterialTheme.colors.error
+    val background = MaterialTheme.colors.background
+    val goalExceededColor = MaterialTheme.colors.error
     val angleRatio = remember {
-       Animatable(0f)
+        Animatable(0f)
     }
     LaunchedEffect(key1 = value) {
         angleRatio.animateTo(
-            targetValue = if(goal > 0) {
+            targetValue = if (goal > 0) {
                 value / goal.toFloat()
-            } else {
-                0f
-            },
-            tween(
+            } else 0f,
+            animationSpec = tween(
                 durationMillis = 300
             )
         )
     }
-
     Box(
         modifier = modifier,
         contentAlignment = Alignment.Center
@@ -60,19 +56,20 @@ fun NutrientBarInfo(
         Canvas(
             modifier = Modifier
                 .fillMaxWidth()
-                .aspectRatio(1f)
+                .aspectRatio(1f),
         ) {
             drawArc(
-              color = if (value <= goal) backGround else goalExceedColor,
+                color = if(value <= goal) background else goalExceededColor,
                 startAngle = 0f,
                 sweepAngle = 360f,
                 useCenter = false,
                 size = size,
                 style = Stroke(
-                    width = 8.dp.toPx()
+                    width = strokeWidth.toPx(),
+                    cap = StrokeCap.Round
                 )
             )
-            if (value <= goal) {
+            if(value <= goal) {
                 drawArc(
                     color = color,
                     startAngle = 90f,
@@ -95,16 +92,16 @@ fun NutrientBarInfo(
                 unit = stringResource(id = R.string.grams),
                 amountColor = if(value <= goal) {
                     MaterialTheme.colors.onPrimary
-                } else goalExceedColor,
+                } else goalExceededColor,
                 unitColor = if(value <= goal) {
                     MaterialTheme.colors.onPrimary
-                } else goalExceedColor
+                } else goalExceededColor
             )
             Text(
                 text = name,
                 color = if(value <= goal) {
                     MaterialTheme.colors.onPrimary
-                } else goalExceedColor,
+                } else goalExceededColor,
                 style = MaterialTheme.typography.body1,
                 fontWeight = FontWeight.Light
             )
