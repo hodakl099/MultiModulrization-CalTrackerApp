@@ -48,9 +48,11 @@ class TrackerRepositoryImpl(
 
     }
 
+
     override suspend fun insertTrackedFood(food: TrackedFood) {
         dao.insertTrackedFood(food.toTrackedFoodEntity())
     }
+
 
     override suspend fun deleteTrackedFood(food: TrackedFood) {
         dao.deleteTrackedFood(food.toTrackedFoodEntity())
@@ -58,11 +60,19 @@ class TrackerRepositoryImpl(
 
     override fun getFoodsForDate(localDate: LocalDate): Flow<List<TrackedFood>> {
       return  dao.getFoodsForDate(
+
             day = localDate.dayOfMonth,
+
             month = localDate.monthValue,
+
             year = localDate.year
+
         ).map { entity ->
+
           entity.map { it.toTrackedFood() }
+
       }
+
     }
+
 }
