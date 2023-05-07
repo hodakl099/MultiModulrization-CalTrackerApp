@@ -63,8 +63,6 @@ class SearchViewModel @Inject constructor(
         }
 
     }
-
-
     private fun executeSearch() {
         viewModelScope.launch {
             state = state.copy(
@@ -92,7 +90,6 @@ class SearchViewModel @Inject constructor(
                 }
         }
     }
-
     private fun trackFood(event : SearchEvent.OnTrackFoodClick) {
         viewModelScope.launch {
             val uiState = state.trackableFood.find { it.food == event.food}
