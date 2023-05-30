@@ -2,8 +2,8 @@ package com.example.core_ui
 
 import androidx.compose.ui.graphics.Color
 
-val BrightGreen = Color(0xFF00C713)
-val DarkGreen = Color(0xFF00790C)
+val TropicalIndigo = Color(0xFFA98BE4)
+val MajorelleBlue = Color(0xFF7849D4)
 val Orange =  Color(0xFFFFAA00)
 val CarbColor = Color(0xFFEEFF00)
 val ProteinColor = Orange
