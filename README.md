@@ -1,5 +1,5 @@
  # Calories Tracker Application
-Introduction
+# Introduction
 
 The Calories Tracker Application is a modern, easy-to-use, feature-rich application designed to help users keep track of their calorie intake. It has been designed with usability in mind and follows the best practices in software development, including a clean architecture and multi-module structure.
 
