@@ -29,8 +29,18 @@ The application uses several libraries and technologies, including:
 
 The project follows the principles of Clean Architecture, which separates code into layers with clear responsibilities and rules for interaction. It's a multi-module architecture designed to make the codebase easier to manage and maintain.
 Getting Started
-
+```
     Clone this repository.
     Open the project directory in Android Studio.
     Obtain your API key and add it in the project.
     Run the application.
+```
+   #  Testing
+
+The Calories Tracker Application has extensive test coverage, including:
+
+    Unit tests: These tests ensure the correctness of the smallest pieces of code in isolation.
+    End-to-End tests: These tests cover complete functionality of the application from start to finish, ensuring the system works together as a whole.
+    Android tests: These tests validate the behavior of the components in the Android framework.
+
+All the tests help to ensure the robustness and reliability of the application, contributing to maintainability and scalability.
