@@ -1,28 +1,25 @@
 package com.example.tracker_presentation.tracker_overview.components
 
 import androidx.compose.animation.core.animateIntAsState
-import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.core_ui.LocalSpacing
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.Text
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.sp
 import com.example.core_ui.CarbColor
 import com.example.core_ui.FatColor
-import com.example.core_ui.LocalSpacing
 import com.example.core_ui.ProteinColor
 import com.example.tracker_presentation.components.UnitDisplay
 import com.example.tracker_presentation.tracker_overview.TrackerOverviewState
 import core.R
-
 
 @Composable
 fun NutrientsHeader(
@@ -67,7 +64,7 @@ fun NutrientsHeader(
                     color = MaterialTheme.colors.onPrimary
                 )
                 UnitDisplay(
-                    amount = animatedCalorieCount.value,
+                    amount = state.caloriesGoal,
                     unit = stringResource(id = R.string.kcal),
                     amountColor = MaterialTheme.colors.onPrimary,
                     amountTextSize = 40.sp,

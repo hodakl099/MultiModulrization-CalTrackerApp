@@ -27,7 +27,6 @@ import com.example.tracker_domain.model.TrackedFood
 import com.example.tracker_presentation.components.NutrientInfo
 import core.R
 
-
 @ExperimentalCoilApi
 @Composable
 fun TrackedFoodItem(

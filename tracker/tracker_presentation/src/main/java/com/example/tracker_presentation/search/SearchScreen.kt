@@ -1,6 +1,5 @@
 package com.example.tracker_presentation.search
 
-
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -26,7 +25,6 @@ import com.example.tracker_presentation.search.components.SearchTextField
 import com.example.tracker_presentation.search.components.TrackableFoodItem
 import java.time.LocalDate
 import core.R
-
 
 @ExperimentalCoilApi
 @ExperimentalComposeUiApi

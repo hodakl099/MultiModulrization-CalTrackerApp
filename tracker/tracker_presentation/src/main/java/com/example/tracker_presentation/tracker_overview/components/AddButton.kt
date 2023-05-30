@@ -21,12 +21,11 @@ import core.R
 
 @Composable
 fun AddButton(
-    text : String,
-    onClick : () -> Unit,
-    modifier : Modifier = Modifier,
-    color : Color = MaterialTheme.colors.primary
-    ) {
-
+    text: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    color: Color = MaterialTheme.colors.primary
+) {
     val spacing = LocalSpacing.current
     Row(
         modifier = modifier
@@ -53,5 +52,4 @@ fun AddButton(
             color = color
         )
     }
-
 }

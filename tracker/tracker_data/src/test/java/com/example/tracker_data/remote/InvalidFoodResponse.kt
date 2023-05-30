@@ -1,5 +1,4 @@
-package com.example.tracker_data.fake_remote
-
+package com.example.tracker_data.remote
 
 val malformedFoodResponse = """
     {

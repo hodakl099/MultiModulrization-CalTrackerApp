@@ -6,7 +6,6 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.core.domain.prefrences.Preferences
-import com.example.core.navigation.Route
 import com.example.core.util.UiEvent
 import com.example.tracker_domain.use_case.TrackerUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,20 +17,19 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
 @HiltViewModel
-class TrackerOverviewModel @Inject constructor(
+class TrackerOverviewViewModel @Inject constructor(
     preferences: Preferences,
-    private val trackerUseCases : TrackerUseCases
+    private val trackerUseCases: TrackerUseCases,
 ): ViewModel() {
 
     var state by mutableStateOf(TrackerOverviewState())
-    private set
+        private set
 
     private val _uiEvent = Channel<UiEvent>()
     val uiEvent = _uiEvent.receiveAsFlow()
 
-    private var getFoodsForDate: Job? = null
+    private var getFoodsForDateJob: Job? = null
 
     init {
         refreshFoods()
@@ -40,19 +38,6 @@ class TrackerOverviewModel @Inject constructor(
 
     fun onEvent(event: TrackerOverviewEvent) {
         when(event) {
-            is TrackerOverviewEvent.OnAddFoodClick -> {
-                viewModelScope.launch {
-                    _uiEvent.send(
-                        UiEvent.Navigate(
-                            route = Route.SEARCH
-                                    + "/${event.meal.mealType.type}"
-                                    + "/${state.date.dayOfMonth}"
-                                    + "/${state.date.monthValue}"
-                                    + "/${state.date.year}"
-                        )
-                    )
-                }
-            }
             is TrackerOverviewEvent.OnDeleteTrackedFoodClick -> {
                 viewModelScope.launch {
                     trackerUseCases.deleteTrackedFood(event.trackedFood)
@@ -84,8 +69,8 @@ class TrackerOverviewModel @Inject constructor(
     }
 
     private fun refreshFoods() {
-        getFoodsForDate?.cancel()
-        getFoodsForDate = trackerUseCases
+        getFoodsForDateJob?.cancel()
+        getFoodsForDateJob = trackerUseCases
             .getFoodsForDate(state.date)
             .onEach { foods ->
                 val nutrientsResult = trackerUseCases.calculateMealNutrients(foods)
@@ -119,5 +104,4 @@ class TrackerOverviewModel @Inject constructor(
             }
             .launchIn(viewModelScope)
     }
-
 }

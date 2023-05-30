@@ -1,9 +1,5 @@
-package com.example.tracker_presentation.tracker_overview
+package com.example.tracker_presentation.tracker_overview.components
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -13,18 +9,19 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import coil.compose.rememberImagePainter
+import com.example.core_ui.LocalSpacing
+import com.example.tracker_presentation.tracker_overview.Meal
 import androidx.compose.foundation.layout.*
 import androidx.compose.ui.unit.sp
-import com.example.core_ui.LocalSpacing
 import com.example.tracker_presentation.components.NutrientInfo
 import com.example.tracker_presentation.components.UnitDisplay
 import core.R
-
 
 @Composable
 fun ExpandableMeal(

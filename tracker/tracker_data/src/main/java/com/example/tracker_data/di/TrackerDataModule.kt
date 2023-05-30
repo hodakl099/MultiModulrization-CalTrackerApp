@@ -2,8 +2,7 @@ package com.example.tracker_data.di
 
 import android.app.Application
 import androidx.room.Room
-import androidx.room.RoomDatabase
-import com.example.tracker_data.local.entity.TrackerDatabase
+import com.example.tracker_data.local.TrackerDatabase
 import com.example.tracker_data.remote.OpenFoodApi
 import com.example.tracker_data.repository.TrackerRepositoryImpl
 import com.example.tracker_domain.repository.TrackerRepository
@@ -18,14 +17,13 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
 import javax.inject.Singleton
 
-
 @Module
 @InstallIn(SingletonComponent::class)
-object TrackerDataModule  {
+object TrackerDataModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient() : OkHttpClient {
+    fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(
                 HttpLoggingInterceptor().apply {
@@ -37,7 +35,7 @@ object TrackerDataModule  {
 
     @Provides
     @Singleton
-    fun provideOpenApi(client: OkHttpClient) : OpenFoodApi {
+    fun provideOpenFoodApi(client: OkHttpClient): OpenFoodApi {
         return Retrofit.Builder()
             .baseUrl(OpenFoodApi.BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
@@ -48,25 +46,23 @@ object TrackerDataModule  {
 
     @Provides
     @Singleton
-    fun provideTrackerDatabase(app : Application) : TrackerDatabase {
+    fun provideTrackerDatabase(app: Application): TrackerDatabase {
         return Room.databaseBuilder(
             app,
             TrackerDatabase::class.java,
-            "tracker_db",
+            "tracker_db"
         ).build()
     }
 
     @Provides
     @Singleton
-    fun provideTrackerRepositoryImpl(
-        api : OpenFoodApi,
-        db : TrackerDatabase
-    ) : TrackerRepository {
+    fun provideTrackerRepository(
+        api: OpenFoodApi,
+        db: TrackerDatabase
+    ): TrackerRepository {
         return TrackerRepositoryImpl(
-            api = api,
-            dao = db.dao
+            dao = db.dao,
+            api = api
         )
     }
-
-
 }

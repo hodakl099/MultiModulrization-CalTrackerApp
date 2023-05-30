@@ -1,6 +1,5 @@
 package com.example.tracker_presentation.search.components
 
-
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -16,6 +15,8 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.unit.dp
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
+import com.example.core_ui.LocalSpacing
+import com.example.tracker_presentation.search.TrackableFoodUiState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
@@ -29,12 +30,13 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.LastBaseline
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.sp
-import com.example.core_ui.LocalSpacing
 import com.example.tracker_presentation.components.NutrientInfo
-import com.example.tracker_presentation.search.TrackableFoodUiState
 import core.R
 
 @ExperimentalCoilApi
@@ -147,7 +149,8 @@ fun TrackableFoodItem(
                         keyboardOptions = KeyboardOptions(
                             imeAction = if(trackableFoodUiState.amount.isNotBlank()) {
                                 ImeAction.Done
-                            } else ImeAction.Default
+                            } else ImeAction.Default,
+                            keyboardType = KeyboardType.Number
                         ),
                         keyboardActions = KeyboardActions(
                             onDone = {
@@ -164,6 +167,9 @@ fun TrackableFoodItem(
                             )
                             .alignBy(LastBaseline)
                             .padding(spacing.spaceMedium)
+                            .semantics {
+                                contentDescription = "Amount"
+                            }
                     )
                     Spacer(modifier = Modifier.width(spacing.spaceExtraSmall))
                     Text(

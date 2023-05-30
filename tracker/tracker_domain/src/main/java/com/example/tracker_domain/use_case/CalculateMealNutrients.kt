@@ -13,8 +13,7 @@ class CalculateMealNutrients(
     private val preferences: Preferences
 ) {
 
-
-    operator fun invoke(trackedFoods : List<TrackedFood>) : Result {
+    operator fun invoke(trackedFoods: List<TrackedFood>): Result {
         val allNutrients = trackedFoods
             .groupBy { it.mealType }
             .mapValues { entry ->
@@ -50,9 +49,7 @@ class CalculateMealNutrients(
             totalCalories = totalCalories,
             mealNutrients = allNutrients
         )
-
     }
-
 
     private fun bmr(userInfo: UserInfo): Int {
         return when(userInfo.gender) {
@@ -79,10 +76,8 @@ class CalculateMealNutrients(
             is GoalType.GainWeight -> 500
         }
         return (bmr(userInfo) * activityFactor + caloryExtra).roundToInt()
-
-
-
     }
+
     data class MealNutrients(
         val carbs: Int,
         val protein: Int,
@@ -90,6 +85,7 @@ class CalculateMealNutrients(
         val calories: Int,
         val mealType: MealType
     )
+
     data class Result(
         val carbsGoal: Int,
         val proteinGoal: Int,
@@ -101,5 +97,4 @@ class CalculateMealNutrients(
         val totalCalories: Int,
         val mealNutrients: Map<MealType, MealNutrients>
     )
-
 }

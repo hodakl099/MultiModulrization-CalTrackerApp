@@ -1,13 +1,13 @@
 package com.example.tracker_domain.use_case
 
+import com.google.common.truth.Truth.assertThat
 import com.example.core.domain.model.ActivityLevel
 import com.example.core.domain.model.Gender
 import com.example.core.domain.model.GoalType
 import com.example.core.domain.model.UserInfo
-import com.example.core.domain.prefrences.Preferences
+import com.example.core.domain.preferences.Preferences
 import com.example.tracker_domain.model.MealType
 import com.example.tracker_domain.model.TrackedFood
-import com.google.common.truth.Truth.assertThat
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.Before
@@ -17,12 +17,11 @@ import kotlin.random.Random
 
 class CalculateMealNutrientsTest {
 
-
     private lateinit var calculateMealNutrients: CalculateMealNutrients
 
     @Before
-    fun setup() {
-        val preferences  = mockk<Preferences>(relaxed = true)
+    fun setUp() {
+        val preferences = mockk<Preferences>(relaxed = true)
         every { preferences.loadUserInfo() } returns UserInfo(
             gender = Gender.Male,
             age = 20,
@@ -96,5 +95,4 @@ class CalculateMealNutrientsTest {
 
         assertThat(dinnerCarbs).isEqualTo(expectedCarbs)
     }
-
 }

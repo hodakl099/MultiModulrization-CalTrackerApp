@@ -13,8 +13,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import java.time.LocalDate
 import core.R
+import java.time.LocalDate
 
 @Composable
 fun DaySelector(
@@ -35,7 +35,7 @@ fun DaySelector(
             )
         }
         Text(
-            text = ParseDateText(date = date),
+            text = parseDateText(date = date),
             style = MaterialTheme.typography.h2
         )
         IconButton(onClick = onNextDayClick) {

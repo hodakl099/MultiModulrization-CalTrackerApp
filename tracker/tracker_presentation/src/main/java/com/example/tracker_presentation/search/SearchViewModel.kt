@@ -9,22 +9,21 @@ import com.example.core.domain.use_case.FilterOutDigits
 import com.example.core.util.UiEvent
 import com.example.core.util.UiText
 import com.example.tracker_domain.use_case.TrackerUseCases
+import core.R
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import core.R
-import dagger.hilt.android.lifecycle.HiltViewModel
-
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
     private val trackerUseCases: TrackerUseCases,
     private val filterOutDigits: FilterOutDigits
-) : ViewModel() {
+): ViewModel() {
 
     var state by mutableStateOf(SearchState())
-    private set
+        private set
 
     private val _uiEvent = Channel<UiEvent>()
     val uiEvent = _uiEvent.receiveAsFlow()
@@ -64,8 +63,8 @@ class SearchViewModel @Inject constructor(
                 trackFood(event)
             }
         }
-
     }
+
     private fun executeSearch() {
         viewModelScope.launch {
             state = state.copy(
@@ -93,11 +92,12 @@ class SearchViewModel @Inject constructor(
                 }
         }
     }
-    private fun trackFood(event : SearchEvent.OnTrackFoodClick) {
+
+    private fun trackFood(event: SearchEvent.OnTrackFoodClick) {
         viewModelScope.launch {
-            val uiState = state.trackableFood.find { it.food == event.food}
+            val uiState = state.trackableFood.find { it.food == event.food }
             trackerUseCases.trackFood(
-                trackedFood = uiState?.food ?: return@launch,
+                food = uiState?.food ?: return@launch,
                 amount = uiState.amount.toIntOrNull() ?: return@launch,
                 mealType = event.mealType,
                 date = event.date

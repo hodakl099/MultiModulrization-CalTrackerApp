@@ -5,7 +5,6 @@ import com.example.core.util.UiText
 import com.example.tracker_domain.model.MealType
 import core.R
 
-
 data class Meal(
     val name: UiText,
     @DrawableRes val drawableRes: Int,
@@ -16,7 +15,6 @@ data class Meal(
     val calories: Int = 0,
     val isExpanded: Boolean = false
 )
-
 
 val defaultMeals = listOf(
     Meal(

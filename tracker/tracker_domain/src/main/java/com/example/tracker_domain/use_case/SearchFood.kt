@@ -8,16 +8,13 @@ class SearchFood(
 ) {
 
     suspend operator fun invoke(
-        query : String,
-        page : Int = 1,
-        pageSize : Int = 20
-    ) : Result<List<TrackableFood>> {
-        if (query.isBlank()) {
+        query: String,
+        page: Int = 1,
+        pageSize: Int = 40
+    ): Result<List<TrackableFood>> {
+        if(query.isBlank()) {
             return Result.success(emptyList())
         }
-        return repository.searchFood(query, page, pageSize)
+        return repository.searchFood(query.trim(), page, pageSize)
     }
-
-
-
 }

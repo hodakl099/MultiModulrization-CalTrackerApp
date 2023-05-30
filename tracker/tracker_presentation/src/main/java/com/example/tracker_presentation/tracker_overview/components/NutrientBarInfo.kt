@@ -1,6 +1,6 @@
 package com.example.tracker_presentation.tracker_overview.components
 
-import  androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
@@ -21,9 +21,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.example.tracker_presentation.components.UnitDisplay
 import core.R
-
+import com.example.tracker_presentation.components.UnitDisplay
 
 @Composable
 fun NutrientBarInfo(

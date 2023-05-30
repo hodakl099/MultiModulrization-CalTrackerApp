@@ -1,6 +1,5 @@
 package com.example.tracker_domain.di
 
-
 import com.example.core.domain.prefrences.Preferences
 import com.example.tracker_domain.repository.TrackerRepository
 import com.example.tracker_domain.use_case.*
@@ -9,7 +8,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
-
 
 @Module
 @InstallIn(ViewModelComponent::class)
@@ -26,7 +24,7 @@ object TrackerDomainModule {
             searchFood = SearchFood(repository),
             getFoodsForDate = GetFoodsForDate(repository),
             deleteTrackedFood = DeleteTrackedFood(repository),
-            calculateMealNutrients = CalculateMealNutrients(preferences = preferences)
+            calculateMealNutrients = CalculateMealNutrients(preferences)
         )
     }
 }

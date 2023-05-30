@@ -10,5 +10,4 @@ class DeleteTrackedFood(
     suspend operator fun invoke(trackedFood: TrackedFood) {
         repository.deleteTrackedFood(trackedFood)
     }
-
 }
