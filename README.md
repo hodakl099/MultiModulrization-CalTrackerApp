@@ -1,4 +1,5 @@
  # Calories Tracker Application
+ ![My Image](https://drive.google.com/file/d/1nJht5mxwl5yQB50Ed30MXHj3gyA6e2Q7/view?usp=share_link)
 # Introduction
 
 The Calories Tracker Application is a modern, feature-rich, and easy-to-use app designed to help users keep track of their calorie intake. Developed using Jetpack Compose Kotlin for Android, the app offers various categories of food data fetched from a freely accessible API and allows users to select different meal types like Dinner, Breakfast, Lunch, and Snacks.
