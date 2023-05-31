@@ -1,5 +1,5 @@
  # Calories Tracker Application
- ![My Image]([https://drive.google.com/file/d/1nJht5mxwl5yQB50Ed30MXHj3gyA6e2Q7/view?usp=share_link](https://drive.google.com/file/d/1nJht5mxwl5yQB50Ed30MXHj3gyA6e2Q7/view?usp=share_link))
+ ![My Image](https://drive.google.com/file/d/1nJht5mxwl5yQB50Ed30MXHj3gyA6e2Q7/view?usp=share_link)
  
 # Introduction
 
